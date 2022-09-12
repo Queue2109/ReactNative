@@ -7,21 +7,31 @@ export default function App() {
         <TextInput style={styles.textInput} placeholder="Your course goal"></TextInput>
         <Button title="Add goal"/>
       </View>
-      <View>
+      <View style={styles.goalsContainer}>
         <Text>List of goals:</Text>
       </View>
     </View>
   );
 }
-// to avoid copy and pasting styles, you should use the following function:
+
 
 const styles = StyleSheet.create({
+  // by default, it takes only as much space as it needs
+  // force it to take all of the space
   appContainer: {
-    padding: 50,
+    paddingTop: 50,
+    flex: 1,
+    paddingHorizontal: 16    
   },
   inputContainer: {
+    flex: 1,
     flexDirection:  "row",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 24,
+    borderBottomWidth: 1,
+    borderBottomColor: '#cccccc'
+
   },
   textInput: {
     borderWidth: 1,
@@ -29,5 +39,8 @@ const styles = StyleSheet.create({
     width: '80%',
     marginRight: 8,
     padding: 8
+  },
+  goalsContainer: {
+    flex: 5,
   }
 });
