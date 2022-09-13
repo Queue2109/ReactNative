@@ -8,7 +8,7 @@ export default function App() {
 
   const goalInputHandler = (enteredText: string) => {
     setEnteredGoalText(enteredText);
-  }
+  };
 
   const addGoalHandler = () => {
     setCourseGoals((currentCourseGoals) => [
@@ -30,7 +30,11 @@ export default function App() {
       </View>
       <View style={styles.goalsContainer}>
         {courseGoals.map((goal: string) => (
-          <Text key={goal}>{goal}</Text>
+          <View key={goal} style={styles.goalItem}>
+          <Text style={styles.goalText}>
+            {goal}
+          </Text>
+          </View>
         ))}
       </View>
     </View>
@@ -38,8 +42,6 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  // by default, it takes only as much space as it needs
-  // force it to take all of the space
   appContainer: {
     paddingTop: 50,
     flex: 1,
@@ -64,4 +66,12 @@ const styles = StyleSheet.create({
   goalsContainer: {
     flex: 5,
   },
+  goalItem: {
+    margin: 8,
+    borderRadius: 6,
+    backgroundColor: "purple",
+  },
+  goalText: {
+    color: "white",
+  }
 });
