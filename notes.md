@@ -18,3 +18,8 @@ If you want to scroll, you need to makee it happen!!
     -> use it as <ScrollView>
     -> it needs to be inside of the <View> or whatever to keep the same proportions as before
     -> you also have props for scrolling... different ways and stuff.
+
+For long lists we tipically don't use scrolling
+instead: vertical scrolling... flat list
+
+Be careful with types! Make interfaces and also in the future, put interfaces in a new file to be more organized!

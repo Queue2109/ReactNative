@@ -4,14 +4,19 @@ import {
   Text,
   TextInput,
   View,
-  ScrollView,
+  FlatList,
 } from "react-native";
 import { useState, useSyncExternalStore } from "react";
 
 export default function App() {
+  interface ICourseGoals {
+    text: string;
+    key: string;
+  }
+
   const [enteredGoalText, setEnteredGoalText] = useState("");
 
-  const [courseGoals, setCourseGoals] = useState<string[]>([]);
+  const [courseGoals, setCourseGoals] = useState<ICourseGoals[]>([]);
 
   const goalInputHandler = (enteredText: string) => {
     setEnteredGoalText(enteredText);
@@ -20,7 +25,7 @@ export default function App() {
   const addGoalHandler = () => {
     setCourseGoals((currentCourseGoals) => [
       ...currentCourseGoals,
-      enteredGoalText,
+      { text: enteredGoalText, key: Math.random().toString() },
     ]);
   };
 
@@ -36,13 +41,21 @@ export default function App() {
         <Button title="Add goal" onPress={addGoalHandler} />
       </View>
       <View style={styles.goalsContainer}>
-        <ScrollView alwaysBounceHorizontal>
-          {courseGoals.map((goal: string) => (
-            <View key={goal} style={styles.goalItem}>
-              <Text style={styles.goalText}>{goal}</Text>
-            </View>
-          ))}
-        </ScrollView>
+        <FlatList
+          data={courseGoals}
+          renderItem={(itemData) => {
+            return (
+              <View style={styles.goalItem}>
+                <Text style={styles.goalText}>{itemData.item.text}</Text>
+              </View>
+            );
+          }}
+          // alternative for making unique ids for elements. item.id... idk try it someday
+          keyExtractor={(item, index) => {
+            return item.key;
+          }}
+          alwaysBounceVertical={false}
+        />
       </View>
     </View>
   );
