@@ -1,12 +1,13 @@
 import {
   Button,
   StyleSheet,
-  Text,
   TextInput,
   View,
   FlatList,
 } from "react-native";
 import { useState, useSyncExternalStore } from "react";
+
+import GoalItem  from "./components/GoalItem";
 
 export default function App() {
   interface ICourseGoals {
@@ -44,11 +45,7 @@ export default function App() {
         <FlatList
           data={courseGoals}
           renderItem={(itemData) => {
-            return (
-              <View style={styles.goalItem}>
-                <Text style={styles.goalText}>{itemData.item.text}</Text>
-              </View>
-            );
+            return <GoalItem text={itemData.item.text} />;
           }}
           // alternative for making unique ids for elements. item.id... idk try it someday
           keyExtractor={(item, index) => {
@@ -85,13 +82,5 @@ const styles = StyleSheet.create({
   },
   goalsContainer: {
     flex: 5,
-  },
-  goalItem: {
-    margin: 8,
-    borderRadius: 6,
-    backgroundColor: "purple",
-  },
-  goalText: {
-    color: "white",
   },
 });

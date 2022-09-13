@@ -23,3 +23,8 @@ For long lists we tipically don't use scrolling
 instead: vertical scrolling... flat list
 
 Be careful with types! Make interfaces and also in the future, put interfaces in a new file to be more organized!
+
+Adding components:
+    -> into a folder named "components"
+    -> you need to import it in the main App.tsx ... import GoalItem  from "./components/GoalItem";
+    -> separate StyleSheet... to be more organised
