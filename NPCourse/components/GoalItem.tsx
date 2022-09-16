@@ -2,9 +2,9 @@ import { StyleSheet, View, Text} from "react-native";
 
 
 const GoalItem = (props:any) => {
-  return (
+  return ( 
     <View style={styles.goalItem}>
-      <Text style={styles.goalText}>{props}</Text>
+      <Text style={styles.goalText}>{props.text}</Text>
     </View>
   );
 };
