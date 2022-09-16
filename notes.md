@@ -32,3 +32,7 @@ Adding components:
 IMAGE INSERTON:
 you don't input the link to the location of the image, but you should do it as"
 require('pathToImage')
+
+APP.JSON:
+if you want for a style to appear on all of the pages of your app, add them to the
+expo compartment in this file (app.json)
