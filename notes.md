@@ -28,3 +28,7 @@ Adding components:
     -> into a folder named "components"
     -> you need to import it in the main App.tsx ... import GoalItem  from "./components/GoalItem";
     -> separate StyleSheet... to be more organised
+
+IMAGE INSERTON:
+you don't input the link to the location of the image, but you should do it as"
+require('pathToImage')
