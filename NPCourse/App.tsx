@@ -1,11 +1,7 @@
-import {
-  StyleSheet,
-  View,
-  FlatList,
-} from "react-native";
+import { StyleSheet, View, FlatList } from "react-native";
 import { useState, useSyncExternalStore } from "react";
 
-import GoalItem  from "./components/GoalItem";
+import GoalItem from "./components/GoalItem";
 import GoalInput from "./components/GoalInput";
 
 export default function App() {
@@ -15,26 +11,37 @@ export default function App() {
   }
   const [courseGoals, setCourseGoals] = useState<ICourseGoals[]>([]);
 
-  const addGoalHandler = (enteredGoalText:string) => {
+  const addGoalHandler = (enteredGoalText: string) => {
     setCourseGoals((currentCourseGoals) => [
       ...currentCourseGoals,
       { text: enteredGoalText, id: Math.random().toString() },
     ]);
   };
 
+  const deleteGoalHandler = (id: string) => {
+    setCourseGoals((currentCourseGoals) => {
+      return currentCourseGoals.filter((goal) => goal.id !== id);
+    });
+  };
 
   return (
     <View style={styles.appContainer}>
-      <GoalInput onAddGoal={addGoalHandler}/>
+      <GoalInput onAddGoal={addGoalHandler} />
       <View style={styles.goalsContainer}>
         <FlatList
           data={courseGoals}
           renderItem={(itemData) => {
-              return <GoalItem id={itemData.item.id} text={itemData.item.text}  />;
+            return (
+              <GoalItem
+                id={itemData.item.id}
+                text={itemData.item.text}
+                onDeleteItem={deleteGoalHandler}
+              />
+            );
           }}
           // alternative for making unique ids for elements. item.id... idk try it someday
           //keyExtractor={(item, index) => {
-           // return item.id;
+          // return item.id;
           //}}
           alwaysBounceVertical={false}
         />
