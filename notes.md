@@ -13,7 +13,7 @@ const [courseGoals, setCourseGoals] = useState<string[]>([]);
 You also need to be cautious when adding style to a certain property. 
 Add it to the <View>, and not the <Text> or similar tags, because otherwise it doesn't show the same on iOS and android!!!
 
-If you want to scroll, you need to makee it happen!!
+If you want to scroll, you need to make it happen!!
     -> import ScrollView from React
     -> use it as <ScrollView>
     -> it needs to be inside of the <View> or whatever to keep the same proportions as before
@@ -36,3 +36,5 @@ require('pathToImage')
 APP.JSON:
 if you want for a style to appear on all of the pages of your app, add them to the
 expo compartment in this file (app.json)
+
+react devtools -> install them some day, it is useful because it shows the tree of components and it's a nice to have feature
