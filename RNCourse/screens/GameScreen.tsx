@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, Alert } from "react-native";
+import { StyleSheet, View, Text, Alert, FlatList } from "react-native";
 import { useState, useEffect } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import Title from "../components/ui/Title";
@@ -33,6 +33,7 @@ let maxBoundary: number = 100;
 const GameScreen = ({ userNumber, onGameOver }: IProps) => {
   const initialGuess = generateRandomBetween(1, 100, userNumber);
   const [currentGuess, setCurrentGuess] = useState<number>(initialGuess);
+  const [guessRounds, setGuessRounds] = useState<number[]>([initialGuess]);
 
   useEffect(() => {
     if (currentGuess === userNumber) {
@@ -42,8 +43,7 @@ const GameScreen = ({ userNumber, onGameOver }: IProps) => {
 
   // we make sure that this is executed only the first time
   useEffect(() => {
-    minBoundary = 1,
-    maxBoundary = 100
+    (minBoundary = 1), (maxBoundary = 100);
   }, []);
 
   const nextGuessHandler = (direction: string) => {
@@ -68,6 +68,7 @@ const GameScreen = ({ userNumber, onGameOver }: IProps) => {
       currentGuess
     );
     setCurrentGuess(newRndNum);
+    setGuessRounds((prevGuessRounds) => [newRndNum, ...prevGuessRounds]);
   };
 
   return (
@@ -93,7 +94,8 @@ const GameScreen = ({ userNumber, onGameOver }: IProps) => {
         </View>
         {/*   + -   */}
       </Card>
-      <View>{/*LOG ROUNDS</View>*/}</View>
+      {/* it's not such a bad solution for this case, but if the list is long, it's not ideal*/}
+      {/* <View>{guessRounds.map(guessRound => <Text key={guessRound}>{guessRound}</Text>)}</View>*/}
     </View>
   );
 };
