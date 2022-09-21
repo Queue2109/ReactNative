@@ -40,7 +40,13 @@ const GameScreen = ({ userNumber, onGameOver }: IProps) => {
     }
   }, [currentGuess, userNumber, onGameOver]);
 
-  const nextGuessHandler = (direction: any) => {
+  // we make sure that this is executed only the first time
+  useEffect(() => {
+    minBoundary = 1,
+    maxBoundary = 100
+  }, []);
+
+  const nextGuessHandler = (direction: string) => {
     if (
       (direction == "lower" && currentGuess < userNumber) ||
       (direction == "greater" && currentGuess > userNumber)
