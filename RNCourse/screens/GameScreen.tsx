@@ -6,12 +6,19 @@ import NumberContainer from "../components/game/NumberContainer";
 import PrimaryButton from "../components/ui/PrimaryButton";
 import Card from "../components/ui/Card";
 import InstructionText from "../components/ui/InstructionText";
+
+interface IProps {
+  userNumber: number,
+  onGameOver: () => void
+}
+
+
 //excluded number is the one that is typed in by the user
 const generateRandomBetween = (
   min: number,
   max: number,
   exclude: number
-): void | number => {
+): number => {
   const rndNum = Math.floor(Math.random() * (max - min)) + min;
 
   if (rndNum === exclude) {
@@ -24,9 +31,9 @@ const generateRandomBetween = (
 let minBoundary: number = 1;
 let maxBoundary: number = 100;
 
-const GameScreen = ({ userNumber, onGameOver }: any) => {
+const GameScreen = ({ userNumber, onGameOver }: IProps) => {
   const initialGuess = generateRandomBetween(1, 100, userNumber);
-  const [currentGuess, setCurrentGuess] = useState<any>(initialGuess);
+  const [currentGuess, setCurrentGuess] = useState<number>(initialGuess);
 
   useEffect(() => {
     if (currentGuess === userNumber) {
@@ -34,7 +41,7 @@ const GameScreen = ({ userNumber, onGameOver }: any) => {
     }
   }, [currentGuess, userNumber, onGameOver]);
 
-  const nextGuessHandler = (direction: any) => {
+  const nextGuessHandler = (direction: string) => {
     if (
       (direction == "lower" && currentGuess < userNumber) ||
       (direction == "greater" && currentGuess > userNumber)

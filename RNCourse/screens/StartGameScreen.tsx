@@ -6,7 +6,14 @@ import Title from "../components/ui/Title";
 import Card from "../components/ui/Card";
 import InstructionText from "../components/ui/InstructionText";
 
-const StartGameScreen = ({ onPickNumber }: any) => {
+  interface IProps {
+    onPickNumber: (chosenNumber:number) => void;
+  }
+  
+
+
+
+const StartGameScreen = ({ onPickNumber }: IProps) => {
   const [enteredNumber, setEnteredNumber] = useState<string>("");
 
   const numberInputHandler = (enteredText: string) => {
