@@ -6,11 +6,13 @@ import NumberContainer from "../components/game/NumberContainer";
 import PrimaryButton from "../components/ui/PrimaryButton";
 import Card from "../components/ui/Card";
 import InstructionText from "../components/ui/InstructionText";
+import GuessLogItem from "../components/game/GuessLogItem";
 
 interface IProps {
   userNumber: number;
   onGameOver: () => void;
 }
+
 
 //excluded number is the one that is typed in by the user
 const generateRandomBetween = (
@@ -71,6 +73,8 @@ const GameScreen = ({ userNumber, onGameOver }: IProps) => {
     setGuessRounds((prevGuessRounds) => [newRndNum, ...prevGuessRounds]);
   };
 
+  const guessRoundsListLength = guessRounds.length;
+
   return (
     <View style={styles.screen}>
       <Title>Opponent's guess</Title>
@@ -99,7 +103,7 @@ const GameScreen = ({ userNumber, onGameOver }: IProps) => {
 
       <FlatList
         data={guessRounds}
-        renderItem={(itemData) => <Text>{itemData.item}</Text>}
+        renderItem={(itemData) => <GuessLogItem roundNumber={guessRoundsListLength - itemData.index} guess={itemData.item}/>}
         keyExtractor={(item:number) => item.toString()}
       />
     </View>
