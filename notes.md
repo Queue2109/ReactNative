@@ -38,3 +38,15 @@ if you want for a style to appear on all of the pages of your app, add them to t
 expo compartment in this file (app.json)
 
 react devtools -> install them some day, it is useful because it shows the tree of components and it's a nice to have feature
+
+Every phone has a different structure, some of them have a notch on top off the screen. We want to respect that and do the styles like that alwaysssssss. 
+In app.tsx import SafeAreaView
+
+to download fonts:
+expo install expo-font
+
+to download so that the screen is loading until the font is ready
+expo install expo-app-loading
+
+
+

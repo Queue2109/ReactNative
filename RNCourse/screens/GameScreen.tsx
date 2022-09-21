@@ -8,10 +8,9 @@ import Card from "../components/ui/Card";
 import InstructionText from "../components/ui/InstructionText";
 
 interface IProps {
-  userNumber: number,
-  onGameOver: () => void
+  userNumber: number;
+  onGameOver: () => void;
 }
-
 
 //excluded number is the one that is typed in by the user
 const generateRandomBetween = (
@@ -41,7 +40,7 @@ const GameScreen = ({ userNumber, onGameOver }: IProps) => {
     }
   }, [currentGuess, userNumber, onGameOver]);
 
-  const nextGuessHandler = (direction: string) => {
+  const nextGuessHandler = (direction: any) => {
     if (
       (direction == "lower" && currentGuess < userNumber) ||
       (direction == "greater" && currentGuess > userNumber)
