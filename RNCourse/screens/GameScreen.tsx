@@ -10,9 +10,8 @@ import GuessLogItem from "../components/game/GuessLogItem";
 
 interface IProps {
   userNumber: number;
-  onGameOver: () => void;
+  onGameOver: (num: number) => void;
 }
-
 
 //excluded number is the one that is typed in by the user
 const generateRandomBetween = (
@@ -39,7 +38,7 @@ const GameScreen = ({ userNumber, onGameOver }: IProps) => {
 
   useEffect(() => {
     if (currentGuess === userNumber) {
-      onGameOver();
+      onGameOver(guessRounds.length);
     }
   }, [currentGuess, userNumber, onGameOver]);
 
@@ -100,12 +99,18 @@ const GameScreen = ({ userNumber, onGameOver }: IProps) => {
       </Card>
       {/* it's not such a bad solution for this case, but if the list is long, it's not ideal*/}
       {/* <View>{guessRounds.map(guessRound => <Text key={guessRound}>{guessRound}</Text>)}</View>*/}
-
-      <FlatList
-        data={guessRounds}
-        renderItem={(itemData) => <GuessLogItem roundNumber={guessRoundsListLength - itemData.index} guess={itemData.item}/>}
-        keyExtractor={(item:number) => item.toString()}
-      />
+      <View style={styles.listContainer}>
+        <FlatList
+          data={guessRounds}
+          renderItem={(itemData) => (
+            <GuessLogItem
+              roundNumber={guessRoundsListLength - itemData.index}
+              guess={itemData.item}
+            />
+          )}
+          keyExtractor={(item: number) => item.toString()}
+        />
+      </View>
     </View>
   );
 };
@@ -125,5 +130,9 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flex: 1,
+  },
+  listContainer: {
+    flex: 1,
+    padding: 16,
   },
 });

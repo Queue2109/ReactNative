@@ -48,5 +48,10 @@ expo install expo-font
 to download so that the screen is loading until the font is ready
 expo install expo-app-loading
 
+FLATLIST:
+<FlatList data={guessRounds} renderItem={(itemData) => <Text>{itemData.item}</Text>}  keyExtractor={(item: number) => item.toString()/>
+
+USE INTERFACES!!!!
+
 
 
