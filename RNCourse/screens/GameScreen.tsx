@@ -96,6 +96,12 @@ const GameScreen = ({ userNumber, onGameOver }: IProps) => {
       </Card>
       {/* it's not such a bad solution for this case, but if the list is long, it's not ideal*/}
       {/* <View>{guessRounds.map(guessRound => <Text key={guessRound}>{guessRound}</Text>)}</View>*/}
+
+      <FlatList
+        data={guessRounds}
+        renderItem={(itemData) => <Text>{itemData.item}</Text>}
+        keyExtractor={(item:number) => item.toString()}
+      />
     </View>
   );
 };

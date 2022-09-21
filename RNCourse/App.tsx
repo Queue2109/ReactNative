@@ -35,7 +35,6 @@ export default function App() {
     // automatically pushes us to a beginning screen
     setUserNumber(null);
     setGuessRounds(0);
-    
   }
 
   let screen = <StartGameScreen onPickNumber={pickedNumberHandler} />;
