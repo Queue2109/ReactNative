@@ -70,3 +70,6 @@ An even better approach for styling and using the proper dimensions is this way:
 - add height and width to another constant as described in previous points
 - use it directly in the (this is an example) style={[styles.view, marginTop: marginTopCustom]}
 
+BUILT-IN KEYBOARD
+-the keyboard on iOS has no way to close itself
+- import the KeyboardAvoidingView and ScrollView to make usable input areas
