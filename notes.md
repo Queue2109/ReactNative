@@ -53,5 +53,14 @@ FLATLIST:
 
 USE INTERFACES!!!!
 
+STYLING THE APP
+there's a lot of different phone sizes - don't hardcode heights, widths and similar things into the style containers.  
+instead import the Dimensions API from react-native and get every phone's width/height of a screen/window, and than go from there:
+const deviceWidth = Dimensions.get('window').width;
+borderRadius: deviceWidth < 380 ? 75 : 150,
+width: deviceWidth < 380 ? 150 : 300,
+height: deviceWidth < 380 ? 150 : 300,
+
+
 
 
