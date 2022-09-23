@@ -1,4 +1,10 @@
-import { StyleSheet, View, Text, Alert, FlatList } from "react-native";
+import {
+  StyleSheet,
+  View,
+  useWindowDimensions,
+  Alert,
+  FlatList,
+} from "react-native";
 import { useState, useEffect } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import Title from "../components/ui/Title";
@@ -35,6 +41,7 @@ const GameScreen = ({ userNumber, onGameOver }: IProps) => {
   const initialGuess = generateRandomBetween(1, 100, userNumber);
   const [currentGuess, setCurrentGuess] = useState<number>(initialGuess);
   const [guessRounds, setGuessRounds] = useState<number[]>([initialGuess]);
+  const { height, width } = useWindowDimensions();
 
   useEffect(() => {
     if (currentGuess === userNumber) {
@@ -73,10 +80,9 @@ const GameScreen = ({ userNumber, onGameOver }: IProps) => {
   };
 
   const guessRoundsListLength = guessRounds.length;
-
-  return (
-    <View style={styles.screen}>
-      <Title>Opponent's guess</Title>
+  let content = (
+    //fragment tag is because of the two root components NumberContainer and Card
+    <>
       <NumberContainer>{currentGuess}</NumberContainer>
       <Card>
         {/* basically, the InstructionText components receives some styles, but you can simply override them with adding them classically*/}
@@ -97,6 +103,34 @@ const GameScreen = ({ userNumber, onGameOver }: IProps) => {
         </View>
         {/*   + -   */}
       </Card>
+    </>
+  );
+
+  if (width > 500) {
+    content = (
+      <>
+        <View style={styles.buttonsContainerWide}>
+          <View style={styles.buttonContainer}>
+            <PrimaryButton onPress={nextGuessHandler.bind(this, "lower")}>
+              <Ionicons name="md-remove" size={24} color="white" />
+            </PrimaryButton>
+          </View>
+          <NumberContainer>{currentGuess}</NumberContainer>
+          <View style={styles.buttonContainer}>
+            <PrimaryButton onPress={nextGuessHandler.bind(this, "greater")}>
+              <Ionicons name="md-add" size={24} color="white" />
+            </PrimaryButton>
+          </View>
+        </View>
+      </>
+    );
+  }
+
+  return (
+    <View style={styles.screen}>
+      <Title>Opponent's guess</Title>
+      {content}
+
       {/* it's not such a bad solution for this case, but if the list is long, it's not ideal*/}
       {/* <View>{guessRounds.map(guessRound => <Text key={guessRound}>{guessRound}</Text>)}</View>*/}
       <View style={styles.listContainer}>
@@ -121,7 +155,7 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     padding: 24,
-    alignItems: 'center'
+    alignItems: "center",
   },
   instructionText: {
     marginBottom: 12,
@@ -135,5 +169,9 @@ const styles = StyleSheet.create({
   listContainer: {
     flex: 1,
     padding: 16,
+  },
+  buttonsContainerWide: {
+    flexDirection: "row",
+    alignItems: "center",
   },
 });
