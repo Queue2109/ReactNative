@@ -61,6 +61,12 @@ borderRadius: deviceWidth < 380 ? 75 : 150,
 width: deviceWidth < 380 ? 150 : 300,
 height: deviceWidth < 380 ? 150 : 300,
 
-
-
+ORIENTATION:
+in app.json it's set to 'portrait'. this means that even if the phone rotates, the contents of the screen won't move. you should set it to 'default', which is gonna have an effect. however, the style is not gonna work properly
+An even better approach for styling and using the proper dimensions is this way: 
+- import useWindowDimensions from react-native
+- define width and height like this -> const {width, height} = useWindowDimensions();
+(this should be executed in the main function, because it refreshes more times and therefore the width and height of a window is always valid)
+- add height and width to another constant as described in previous points
+- use it directly in the (this is an example) style={[styles.view, marginTop: marginTopCustom]}
 
