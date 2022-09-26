@@ -10,16 +10,20 @@ interface IPropsItem {
     };
 }
 
-const renderCategoryItem = (itemData: IPropsItem) => {
-    return (
-        <CategoryGridTile
-            title={itemData.item.title}
-            color={itemData.item.color}
-        />
-    );
-};
-
-const CategoriesScreen = () => {
+const CategoriesScreen = ({ navigation }: any) => {
+    const renderCategoryItem = (itemData: IPropsItem) => {
+        const pressHandler = () => {
+            // simply use the page name that you want to navigate to
+            navigation.navigate("MealsOverview");
+        };
+        return (
+            <CategoryGridTile
+                title={itemData.item.title}
+                color={itemData.item.color}
+                onPress={pressHandler}
+            />
+        );
+    };
     return (
         <FlatList
             data={CATEGORIES}
