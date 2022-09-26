@@ -1,12 +1,7 @@
 import { Pressable, View, Text, StyleSheet, Platform } from "react-native";
+import { ICategoryGridTiles } from "../interfaces/Interfaces";
 
-interface IProps {
-    title: string;
-    color: string;
-    onPress: () => void;
-}
-
-const CategoryGridTile = ({ title, color, onPress }: IProps) => {
+const CategoryGridTile = ({ title, color, onPress }: ICategoryGridTiles) => {
     return (
         <View style={styles.gridItem}>
             <Pressable
