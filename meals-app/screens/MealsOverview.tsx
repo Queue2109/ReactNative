@@ -1,7 +1,7 @@
 import { CATEGORIES, MEALS } from "../data/dummy-data";
 import { FlatList, View, StyleSheet } from "react-native";
 import MealItem from "../components/MealItem";
-import { IMealItems } from "../interfaces/Interfaces";
+import { IMealItems, IMealItem, IMealItemView } from "../interfaces/Interfaces";
 import { useLayoutEffect } from "react";
 import { HomeScreenMealsOverview } from "../interfaces/Interfaces";
 
@@ -26,7 +26,7 @@ const MealsOverview = ({ route, navigation }: HomeScreenMealsOverview) => {
     }, [catId, navigation]);
 
     const renderMealItem = (itemData: IMealItems) => {
-        const item = itemData.item;
+        const item: IMealItemView = itemData.item;
         const mealItemProps = {
             id: item.id,
             title: item.title,

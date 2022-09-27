@@ -14,6 +14,23 @@ export type HomeScreenMealsCategories = NativeStackScreenProps<
     "MealsCategories"
 >;
 
+// modify this, it's ugly!!!!
+export interface IMealItem {
+    id: string;
+    categoryIds: string;
+    title: string;
+    affordability: string;
+    complexity: string;
+    imageUrl: string;
+    duration: string;
+    ingredients: string;
+    steps: string;
+    isGlutenFree: boolean;
+    isVegan: boolean;
+    isVegetarian: boolean;
+    isLactoseFree: boolean;
+}
+
 export interface IMealItems {
     item: {
         id: string;
@@ -62,6 +79,12 @@ export interface IMealItemView {
     id: string;
     title: string;
     imageUrl: string;
+    duration: string;
+    affordability: string;
+    complexity: string;
+}
+
+export interface IMealItemComponent {
     duration: string;
     affordability: string;
     complexity: string;
