@@ -101,3 +101,10 @@ export interface ISubtitles {
 export interface IList {
     data: any;
 }
+
+export interface IIconButton {
+    // ugly
+    icon: any;
+    color: string;
+    onPress: () => void;
+}
