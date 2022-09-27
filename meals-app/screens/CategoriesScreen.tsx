@@ -2,12 +2,12 @@ import { CATEGORIES } from "../data/dummy-data";
 import { FlatList } from "react-native";
 import CategoryGridTile from "../components/CategoryGridTiles";
 import React from "react";
-import { ICategories, RootStackParamList } from "../interfaces/Interfaces";
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import {
+    HomeScreenMealsCategories,
+    ICategories,
+} from "../interfaces/Interfaces";
 
-type HomeScreen = NativeStackScreenProps<RootStackParamList, "MealsCategories">;
-
-const CategoriesScreen = ({ navigation }: HomeScreen) => {
+const CategoriesScreen = ({ navigation }: HomeScreenMealsCategories) => {
     const renderCategoryItem = (itemData: ICategories) => {
         const pressHandler = () => {
             // simply use the page name that you want to navigate to

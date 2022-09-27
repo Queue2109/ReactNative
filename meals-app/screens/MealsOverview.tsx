@@ -3,13 +3,9 @@ import { FlatList, View, StyleSheet } from "react-native";
 import MealItem from "../components/MealItem";
 import { IMealItems } from "../interfaces/Interfaces";
 import { useLayoutEffect } from "react";
+import { HomeScreenMealsOverview } from "../interfaces/Interfaces";
 
-import { RootStackParamList } from "../interfaces/Interfaces";
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
-
-type HomeScreen = NativeStackScreenProps<RootStackParamList, "MealsOverview">;
-
-const MealsOverview = ({ route, navigation }: HomeScreen) => {
+const MealsOverview = ({ route, navigation }: HomeScreenMealsOverview) => {
     // params are things you added to navigation prop
     const catId = route.params.categoryId;
 
@@ -32,6 +28,7 @@ const MealsOverview = ({ route, navigation }: HomeScreen) => {
     const renderMealItem = (itemData: IMealItems) => {
         const item = itemData.item;
         const mealItemProps = {
+            id: item.id,
             title: item.title,
             imageUrl: item.imageUrl,
             affordability: item.affordability,
