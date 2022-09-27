@@ -1,4 +1,5 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { TextStyle } from "react-native";
 
 export type HomeScreenMealDetail = NativeStackScreenProps<
     RootStackParamList,
@@ -88,4 +89,15 @@ export interface IMealItemComponent {
     duration: string;
     affordability: string;
     complexity: string;
+    style?: TextStyle;
+    textStyle?: TextStyle;
+}
+
+export interface ISubtitles {
+    children: string;
+}
+
+// this shit uglyyyyyyyyy
+export interface IList {
+    data: any;
 }
