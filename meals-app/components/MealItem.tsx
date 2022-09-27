@@ -7,13 +7,14 @@ import {
     StyleSheet,
     Platform,
 } from "react-native";
+import { IMealItemView } from "../interfaces/Interfaces";
 const MealItem = ({
     title,
     imageUrl,
     duration,
     affordability,
     complexity,
-}: any) => {
+}: IMealItemView) => {
     return (
         <View style={styles.mealItem}>
             <Pressable

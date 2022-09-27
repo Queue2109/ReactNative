@@ -1,4 +1,4 @@
-export interface IMealItem {
+export interface IMealItems {
     item: {
         id: string;
         categoryIds: string;
@@ -37,4 +37,12 @@ export interface ICategoryGridTiles {
     title: string;
     color: string;
     onPress: () => void;
+}
+
+export interface IMealItemView {
+    title: string;
+    imageUrl: string;
+    duration: string;
+    affordability: string;
+    complexity: string;
 }

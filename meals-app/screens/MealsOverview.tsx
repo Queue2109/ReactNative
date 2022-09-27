@@ -1,7 +1,7 @@
 import { CATEGORIES, MEALS } from "../data/dummy-data";
 import { FlatList, View, StyleSheet } from "react-native";
 import MealItem from "../components/MealItem";
-import { IMealItem } from "../interfaces/Interfaces";
+import { IMealItems } from "../interfaces/Interfaces";
 import { useLayoutEffect } from "react";
 
 import { RootStackParamList } from "../interfaces/Interfaces";
@@ -29,7 +29,7 @@ const MealsOverview = ({ route, navigation }: HomeScreen) => {
         });
     }, [catId, navigation]);
 
-    const renderMealItem = (itemData: IMealItem) => {
+    const renderMealItem = (itemData: IMealItems) => {
         const item = itemData.item;
         const mealItemProps = {
             title: item.title,

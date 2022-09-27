@@ -4,7 +4,6 @@ import CategoriesScreen from "./screens/CategoriesScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import MealsOverview from "./screens/MealsOverview";
-import { IMealItem } from "./interfaces/Interfaces";
 
 import { RootStackParamList } from "./interfaces/Interfaces";
 const Stack = createNativeStackNavigator<RootStackParamList>();
