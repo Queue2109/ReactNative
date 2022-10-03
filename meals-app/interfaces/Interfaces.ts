@@ -1,4 +1,5 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import React from "react";
 import { TextStyle } from "react-native";
 
 export type HomeScreenMealDetail = NativeStackScreenProps<
@@ -71,7 +72,7 @@ export interface IMealItemView {
     id: string;
     title: string;
     imageUrl: string;
-    duration: string;
+    duration: number;
     affordability: string;
     complexity: string;
 }
@@ -103,4 +104,9 @@ export interface IIconButton {
 export interface IDrawer {
     name: string;
     component: any;
+}
+
+export interface IIonicons {
+    color: string,
+    size: number
 }
