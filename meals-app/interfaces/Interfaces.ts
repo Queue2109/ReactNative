@@ -18,14 +18,14 @@ export type HomeScreenMealsCategories = NativeStackScreenProps<
 // modify this, it's ugly!!!!
 export interface IMealItem {
     id: string;
-    categoryIds: string;
+    categoryIds: string[];
     title: string;
     affordability: string;
     complexity: string;
     imageUrl: string;
-    duration: string;
-    ingredients: string;
-    steps: string;
+    duration: number;
+    ingredients: string[];
+    steps: string[];
     isGlutenFree: boolean;
     isVegan: boolean;
     isVegetarian: boolean;
@@ -33,29 +33,17 @@ export interface IMealItem {
 }
 
 export interface IMealItems {
-    item: {
-        id: string;
-        categoryIds: string;
-        title: string;
-        affordability: string;
-        complexity: string;
-        imageUrl: string;
-        duration: string;
-        ingredients: string;
-        steps: string;
-        isGlutenFree: boolean;
-        isVegan: boolean;
-        isVegetarian: boolean;
-        isLactoseFree: boolean;
-    };
+    item: IMealItem;
+}
+
+export interface ICategory {
+    id: string;
+    title: string;
+    color: string;
 }
 
 export interface ICategories {
-    item: {
-        id: string;
-        title: string;
-        color: string;
-    };
+    item: ICategory;
 }
 
 export type RootStackParamList = {
@@ -66,6 +54,9 @@ export type RootStackParamList = {
         categoryId: string;
     };
     MealDetail: {
+        mealId?: string;
+    };
+    Drawer?: {
         mealId?: string;
     };
 };
@@ -86,7 +77,7 @@ export interface IMealItemView {
 }
 
 export interface IMealItemComponent {
-    duration: string;
+    duration: number;
     affordability: string;
     complexity: string;
     style?: TextStyle;
@@ -107,4 +98,9 @@ export interface IIconButton {
     icon: any;
     color: string;
     onPress: () => void;
+}
+
+export interface IDrawer {
+    name: string;
+    component: any;
 }

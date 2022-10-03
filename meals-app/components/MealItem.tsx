@@ -12,20 +12,13 @@ import { IMealItemView } from "../interfaces/Interfaces";
 import { useNavigation } from "@react-navigation/native";
 import MealDetails from "./MealDetails";
 
-const MealItem = ({
-    id,
-    title,
-    imageUrl,
-    duration,
-    affordability,
-    complexity,
-}: IMealItemView) => {
+const MealItem = (mealItem: IMealItemView) => {
     // type!!!!!!!!
     const navigation: any = useNavigation();
 
     const selectMealItemHandler = () => {
         navigation.navigate("MealDetail", {
-            mealId: id,
+            mealId: mealItem.id,
         });
     };
 
@@ -39,16 +32,16 @@ const MealItem = ({
                 <View style={styles.innerContainer}>
                     <View>
                         <Image
-                            source={{ uri: imageUrl }}
+                            source={{ uri: mealItem.imageUrl }}
                             style={styles.image}
                         />
-                        <Text style={styles.title}>{title}</Text>
+                        <Text style={styles.title}>{mealItem.title}</Text>
                     </View>
                 </View>
                 <MealDetails
-                    duration={duration}
-                    affordability={affordability}
-                    complexity={complexity}
+                    duration={mealItem.duration}
+                    affordability={mealItem.affordability}
+                    complexity={mealItem.complexity}
                 />
             </Pressable>
         </View>

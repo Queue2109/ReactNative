@@ -1,5 +1,5 @@
 import { Text, View, Image, StyleSheet, ScrollView } from "react-native";
-import { HomeScreenMealDetail } from "../interfaces/Interfaces";
+import { HomeScreenMealDetail, IMealItem } from "../interfaces/Interfaces";
 import { MEALS } from "../data/dummy-data";
 import MealDetails from "../components/MealDetails";
 import Subtitle from "../components/MealDetail/Subtitle";
@@ -10,7 +10,9 @@ import IconButton from "../components/IconButton";
 const MealDetailScreen = ({ route, navigation }: HomeScreenMealDetail) => {
     const mealId = route.params.mealId;
     // change the type !!!!
-    const selectedMeal: any = MEALS.find((meal) => meal.id === mealId);
+    const selectedMeal: IMealItem = MEALS.find(
+        (meal) => meal.id === mealId
+    ) as IMealItem;
     const headerButtonPressHandler = () => {
         console.log("Pressed");
     };
