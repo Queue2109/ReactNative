@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { IFavorites } from "../../../interfaces/Interfaces";
+import { IFavorites } from "../../interfaces/Interfaces";
 
 export const FavoritesContext = createContext({
     ids: [] as number[],

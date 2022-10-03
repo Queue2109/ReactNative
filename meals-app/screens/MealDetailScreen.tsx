@@ -6,7 +6,7 @@ import Subtitle from "../components/MealDetail/Subtitle";
 import List from "../components/MealDetail/List";
 import { useContext, useLayoutEffect } from "react";
 import IconButton from "../components/IconButton";
-import { FavoritesContext } from "../components/store/context/favorites-content";
+import { FavoritesContext } from "../store/context/favorites-content";
 
 const MealDetailScreen = ({ route, navigation }: HomeScreenMealDetail) => {
     const favoriteMealsContext = useContext(FavoritesContext);
