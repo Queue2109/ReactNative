@@ -8,9 +8,9 @@ import {
     Platform,
 } from "react-native";
 
-import { IMealItemView } from "../interfaces/Interfaces";
+import { IMealItemView } from "../../interfaces/Interfaces";
 import { useNavigation } from "@react-navigation/native";
-import MealDetails from "./MealDetails";
+import MealDetails from "../MealDetails";
 
 const MealItem = (mealItem: IMealItemView) => {
     // type!!!!!!!!

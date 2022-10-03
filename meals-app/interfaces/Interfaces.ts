@@ -18,8 +18,8 @@ export type HomeScreenMealsCategories = NativeStackScreenProps<
 
 // modify this, it's ugly!!!!
 export interface IMealItem {
-    id: string;
-    categoryIds: string[];
+    id: number;
+    categoryIds: number[];
     title: string;
     affordability: string;
     complexity: string;
@@ -38,7 +38,7 @@ export interface IMealItems {
 }
 
 export interface ICategory {
-    id: string;
+    id: number;
     title: string;
     color: string;
 }

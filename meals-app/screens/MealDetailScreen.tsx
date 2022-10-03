@@ -4,17 +4,22 @@ import { MEALS } from "../data/dummy-data";
 import MealDetails from "../components/MealDetails";
 import Subtitle from "../components/MealDetail/Subtitle";
 import List from "../components/MealDetail/List";
-import { useLayoutEffect } from "react";
+import { useContext, useLayoutEffect } from "react";
 import IconButton from "../components/IconButton";
+import { FavoritesContext } from "../components/store/context/favorites-content";
 
 const MealDetailScreen = ({ route, navigation }: HomeScreenMealDetail) => {
-    const mealId = route.params.mealId;
-    // change the type !!!!
-    const selectedMeal: IMealItem = MEALS.find(
-        (meal) => meal.id === mealId
-    ) as IMealItem;
-    const headerButtonPressHandler = () => {
-        console.log("Pressed");
+    const favoriteMealsContext = useContext(FavoritesContext);
+
+    const mealId: any = route.params.mealId;
+    const mealIsFavorite: boolean = favoriteMealsContext.ids.includes(mealId);
+    const selectedMeal: any = MEALS.find((meal: any) => meal.id === mealId);
+    const changeFavoritePressHandler = () => {
+        if (mealIsFavorite) {
+            favoriteMealsContext.removeFavorite(mealId);
+        } else {
+            favoriteMealsContext.addFavorite(mealId);
+        }
     };
 
     useLayoutEffect(() => {
@@ -22,9 +27,9 @@ const MealDetailScreen = ({ route, navigation }: HomeScreenMealDetail) => {
             headerRight: () => {
                 return (
                     <IconButton
-                        icon="star"
+                        icon={mealIsFavorite ? "star" : "star-outline"}
                         color="white"
-                        onPress={headerButtonPressHandler}
+                        onPress={changeFavoritePressHandler}
                     />
                 );
             },
