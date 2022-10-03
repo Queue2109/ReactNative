@@ -110,3 +110,9 @@ export interface IIonicons {
     color: string,
     size: number
 }
+
+export interface IFavorites {
+    ids: number[],
+    addFavorite: (num:number) => void,
+    removeFavorite: (num:number) => void
+}
